@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HERO_DESTINATIONS } from '../../data/destinations';
 import Button from '../common/Button';
-import { MapPin, ArrowRight, ArrowDown, Sparkles } from 'lucide-react';
+import { MapPin, ArrowRight, ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Hero() {
   const [destIndex, setDestIndex] = useState(0);
@@ -10,11 +10,21 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setDestIndex((prev) => (prev + 1) % HERO_DESTINATIONS.length);
-    }, 6500);
+    }, 5500);
     return () => clearInterval(timer);
   }, []);
 
   const currentDest = HERO_DESTINATIONS[destIndex];
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setDestIndex((prev) => (prev + 1) % HERO_DESTINATIONS.length);
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setDestIndex((prev) => (prev - 1 + HERO_DESTINATIONS.length) % HERO_DESTINATIONS.length);
+  };
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -25,7 +35,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-10 overflow-hidden bg-[#141518]">
-      {/* Bright & Vivid Cinematic Travel Visual Background */}
+      {/* Bright & Vivid Full-Bleed Cinematic Travel Visual Background */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -33,7 +43,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.6, ease: 'easeInOut' }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
             className="absolute inset-0"
           >
             <img
@@ -117,23 +127,38 @@ export default function Hero() {
 
       </div>
 
-      {/* Asymmetrical Bottom Row (Magazine Destination Indicator Right) */}
+      {/* Bottom Row (Magazine Destination Indicator Right) */}
       <div className="relative z-10 w-full px-6 sm:px-12 md:px-16 lg:px-24 flex items-end justify-end gap-4">
-
 
         {/* Right Destination Magazine Metadata */}
         <motion.div
           initial={{ opacity: 0, x: 25 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col gap-1 p-4 rounded-2xl bg-black/45 backdrop-blur-md border border-white/20 max-w-xs text-left ml-auto sm:ml-0"
+          className="flex flex-col gap-2 p-4 rounded-2xl bg-black/55 backdrop-blur-md border border-white/25 max-w-xs text-left ml-auto sm:ml-0 shadow-2xl group"
         >
           <div className="flex items-center justify-between text-xs text-[#D4A359] font-mono">
-            <span className="font-bold">{currentDest.code}</span>
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3 h-3 text-[#C85A32]" />
+            <span className="flex items-center gap-1 font-semibold">
+              <MapPin className="w-3.5 h-3.5 text-[#C85A32]" />
               {currentDest.coord}
             </span>
+
+            <div className="flex items-center gap-1">
+              <button
+                onClick={handlePrev}
+                className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#C85A32] text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Previous Destination"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#C85A32] text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Next Destination"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
           <AnimatePresence mode="wait">
@@ -142,12 +167,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.35 }}
             >
               <h4 className="font-cinzel text-lg font-bold text-white tracking-widest">
                 {currentDest.name}
               </h4>
-              <p className="text-xs text-white/80 font-sans mt-0.5">
+              <p className="text-xs text-white/90 font-sans mt-0.5 leading-snug">
                 {currentDest.tagline}
               </p>
             </motion.div>

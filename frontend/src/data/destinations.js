@@ -111,38 +111,69 @@ export const DESTINATIONS = [
 
 export const HERO_DESTINATIONS = [
   {
-    code: '01 / 05',
-    name: 'LADAKH',
-    coord: '34.1526° N',
-    tagline: 'Explore the silence →',
-    bg: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80'
-  },
-  {
-    code: '02 / 05',
-    name: 'ALLEPPEY',
-    coord: '9.4981° N',
-    tagline: 'Glide through emerald waters →',
-    bg: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80'
-  },
-  {
-    code: '03 / 05',
-    name: 'JAIPUR',
-    coord: '26.9124° N',
-    tagline: 'Walk among royal pink forts →',
-    bg: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80'
-  },
-  {
-    code: '04 / 05',
-    name: 'MEGHALAYA',
-    coord: '25.5788° N',
-    tagline: 'Discover living root bridges →',
+    name: 'RISHIKESH',
+    coord: '30.0869° N',
+    tagline: 'Sacred Ganges flow & riverfront temples →',
     bg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80'
   },
   {
-    code: '05 / 05',
+    name: 'PONDICHERRY',
+    coord: '11.9416° N',
+    tagline: 'Auroville Matrimandir & French Quarter →',
+    bg: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'JAIPUR',
+    coord: '26.9124° N',
+    tagline: 'Walk among royal pink palaces →',
+    bg: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
     name: 'VARANASI',
     coord: '25.3176° N',
     tagline: 'Experience ancient evening ghats →',
     bg: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'LADAKH',
+    coord: '34.1526° N',
+    tagline: 'Explore high pass mountain silence →',
+    bg: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'ALLEPPEY',
+    coord: '9.4981° N',
+    tagline: 'Glide through emerald backwater canals →',
+    bg: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'MEGHALAYA',
+    coord: '25.5788° N',
+    tagline: 'Discover living root bridges & falls →',
+    bg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'GOA',
+    coord: '15.2993° N',
+    tagline: 'Unwind along golden palm coastlines →',
+    bg: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'HAMPI',
+    coord: '15.3350° N',
+    tagline: 'Wander among ancient stone empires →',
+    bg: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'MUNNAR',
+    coord: '10.0889° N',
+    tagline: 'Trek through endless tea carpeted hills →',
+    bg: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'
+  },
+  {
+    name: 'SPITI VALLEY',
+    coord: '32.2461° N',
+    tagline: 'Journey through high-altitude cold deserts →',
+    bg: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1920&q=80'
   }
 ];
