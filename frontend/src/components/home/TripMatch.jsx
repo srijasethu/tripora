@@ -156,7 +156,7 @@ export default function TripMatch() {
                       onClick={() => alert(`Exploring ${selectedDestination.name} itinerary!`)}
                       className="w-full sm:w-auto font-bold shadow-md"
                     >
-                      View this escape →
+                      View this escape
                     </Button>
                   </div>
                 </div>

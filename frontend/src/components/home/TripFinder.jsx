@@ -134,7 +134,7 @@ export default function TripFinder({ onFindTrip }) {
               icon={ArrowRight}
               className="w-full sm:w-auto text-base font-bold shadow-xl shadow-[#C85A32]/40"
             >
-              FIND MY TRIP →
+              FIND MY TRIP
             </Button>
           </div>
         </form>

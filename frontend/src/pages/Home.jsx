@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../components/home/Hero';
-import StoryTransition from '../components/home/StoryTransition';
-import TripMatch from '../components/home/TripMatch';
+import TripPlanner from '../components/TripPlanner/TripPlanner';
 import BuiltForIndia from '../components/home/BuiltForIndia';
 import IndiaReality from '../components/home/IndiaReality';
 import IndiaExplorer from '../components/home/IndiaExplorer';
@@ -24,13 +23,10 @@ export default function Home() {
       {/* 1. Cinematic Hero & Trip Finder */}
       <Hero onFindTrip={handleFindTrip} />
 
-      {/* 2. Hero -> Content Story Transition */}
-      <StoryTransition />
+      {/* 2. Interactive Trip Planner Section */}
+      <TripPlanner />
 
-      {/* 3. Signature Feature: Trip Match Engine */}
-      <TripMatch />
-
-      {/* 4. Built for India & Multimodal Transport Visualizer */}
+      {/* 3. Built for India & Multimodal Transport Visualizer */}
       <BuiltForIndia />
 
       {/* 5. Signature Feature: India Reality Engine */}

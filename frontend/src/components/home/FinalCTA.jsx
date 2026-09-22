@@ -18,7 +18,7 @@ export default function FinalCTA() {
       {/* Background Photography Visual */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
+          src="/images/destinations/ladakh.jpg"
           alt="Ladakh Mountains Cinematic"
           className="w-full h-full object-cover filter brightness-90 contrast-105"
         />
@@ -79,7 +79,7 @@ export default function FinalCTA() {
             onClick={scrollToMatch}
             className="text-lg font-bold px-10 py-5 shadow-2xl shadow-[#C85A32]/40"
           >
-            START YOUR JOURNEY →
+            START YOUR JOURNEY
           </Button>
 
           <span className="text-xs text-white/80 font-mono tracking-widest uppercase mt-4">

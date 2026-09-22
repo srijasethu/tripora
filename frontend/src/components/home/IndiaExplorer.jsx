@@ -9,7 +9,7 @@ const REGIONS = [
     id: 'kerala',
     name: 'KERALA',
     capital: 'God\'s Own Country',
-    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/destinations/alleppey.jpg',
     tags: ['Backwaters', 'Monsoon Escapes', 'Western Ghats', 'Malabar Food'],
     highlights: ['Varkala Cliff Sunset', 'Kuttanad Canoeing', 'Munnar Tea Trails', 'Wayanad Jungle Homestays'],
     bestTime: 'Oct – Mar / Monsoon (Jun – Aug)',
@@ -19,7 +19,7 @@ const REGIONS = [
     id: 'rajasthan',
     name: 'RAJASTHAN',
     capital: 'Land of Kings',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/destinations/jaipur.jpg',
     tags: ['Heritage Forts', 'Desert Nights', 'Royal Culture', 'Street Food'],
     highlights: ['Jaisalmer Dune Camping', 'Jaipur Pink City Walk', 'Udaipur Lake Palaces', 'Mehrangarh Fort Citadel'],
     bestTime: 'Oct – Mar',
@@ -29,7 +29,7 @@ const REGIONS = [
     id: 'himachal',
     name: 'HIMACHAL',
     capital: 'Valley of the Gods',
-    image: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/destinations/spiti-valley.jpg',
     tags: ['Snow Peaks', 'Cafe Culture', 'Trekking', 'Pinewoods'],
     highlights: ['Spiti Valley High Passes', 'Old Manali Cafe Hopping', 'Bir Billing Paragliding', 'Dharamshala Chants'],
     bestTime: 'Mar – Jun / Sep – Nov',
@@ -39,7 +39,7 @@ const REGIONS = [
     id: 'meghalaya',
     name: 'MEGHALAYA',
     capital: 'Abode of Clouds',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/destinations/meghalaya.jpg',
     tags: ['Root Bridges', 'Waterfalls', 'Caves', 'Cleanest Village'],
     highlights: ['Nongriat Double Decker Bridge', 'Dawki Crystal River', 'Cherrapunji Waterfalls', 'Mawlynnong Stroll'],
     bestTime: 'Oct – Apr',
@@ -49,7 +49,7 @@ const REGIONS = [
     id: 'ladakh',
     name: 'LADAKH',
     capital: 'The High Pass Realm',
-    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/destinations/ladakh.jpg',
     tags: ['Stark Deserts', 'High Lakes', 'Monasteries', 'Stargazing'],
     highlights: ['Pangong Tso Blue Lake', 'Nubra Valley Camel Ride', 'Thiksey Morning Chants', 'Magnetic Hill Drive'],
     bestTime: 'May – Sep',
@@ -159,7 +159,7 @@ export default function IndiaExplorer() {
                   icon={ArrowRight}
                   onClick={() => alert(`Explore ${activeRegion.name} state guide!`)}
                 >
-                  Explore {activeRegion.name} →
+                  Explore {activeRegion.name}
                 </Button>
               </div>
             </div>

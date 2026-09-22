@@ -111,7 +111,7 @@ export default function Hero() {
             onClick={() => scrollToSection('trip-match')}
             className="text-sm font-bold px-8 py-4 shadow-2xl shadow-[#C85A32]/40"
           >
-            START YOUR JOURNEY →
+            START YOUR JOURNEY
           </Button>
 
           <Button
@@ -121,7 +121,7 @@ export default function Hero() {
             onClick={() => scrollToSection('story-transition')}
             className="text-sm font-semibold text-white hover:bg-white/20 px-8 py-4"
           >
-            EXPLORE INDIA ↓
+            EXPLORE INDIA
           </Button>
         </motion.div>
 
