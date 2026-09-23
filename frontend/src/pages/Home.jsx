@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../components/home/Hero';
 import TripPlanner from '../components/TripPlanner/TripPlanner';
-import BuiltForIndia from '../components/home/BuiltForIndia';
 import IndiaReality from '../components/home/IndiaReality';
 import IndiaExplorer from '../components/home/IndiaExplorer';
 import ExperienceGrid from '../components/home/ExperienceGrid';
@@ -26,10 +25,7 @@ export default function Home() {
       {/* 2. Interactive Trip Planner Section */}
       <TripPlanner />
 
-      {/* 3. Built for India & Multimodal Transport Visualizer */}
-      <BuiltForIndia />
-
-      {/* 5. Signature Feature: India Reality Engine */}
+      {/* 3. Signature Feature: India Reality Engine */}
       <IndiaReality />
 
       {/* 6. Interactive India Explorer */}

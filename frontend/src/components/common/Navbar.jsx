@@ -6,6 +6,7 @@ import Button from './Button';
 export default function Navbar({ currentView, setCurrentView, onNavigateToSection }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,17 +15,39 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
       } else {
         setScrolled(false);
       }
+
+      if (currentView === 'home') {
+        const sections = ['trip-match', 'reality-engine', 'explore', 'detour'];
+        const scrollPosition = window.scrollY + 250;
+
+        let current = '';
+        for (const sectionId of sections) {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              current = sectionId;
+            }
+          }
+        }
+        setActiveSection(current);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentView]);
 
   const handleNavClick = (sectionOrView) => {
     setMobileMenuOpen(false);
     if (sectionOrView === 'my-space') {
       setCurrentView('my-space');
+      setActiveSection('my-space');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+      setActiveSection(sectionOrView);
       if (currentView !== 'home') {
         setCurrentView('home');
         setTimeout(() => {
@@ -34,6 +57,14 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
         onNavigateToSection(sectionOrView);
       }
     }
+  };
+
+  const getLinkClasses = (sectionId) => {
+    const isActive = currentView === 'home' && activeSection === sectionId;
+    if (isActive) {
+      return 'bg-[#C85A32] text-white font-bold shadow-md px-3 py-1 rounded-full text-sm transition-all duration-300';
+    }
+    return 'text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer px-3 py-1 rounded-full';
   };
 
   return (
@@ -70,37 +101,39 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className={`hidden md:flex items-center gap-7 px-6 py-2 rounded-full border backdrop-blur-md transition-colors ${
+          <nav className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border backdrop-blur-md transition-colors ${
             scrolled || currentView === 'my-space' ? 'bg-black/5 border-black/10 text-[#141518]' : 'bg-white/10 border-white/20 text-white'
           }`}>
             <button
               onClick={() => handleNavClick('explore')}
-              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer"
+              className={getLinkClasses('explore')}
             >
               Explore
             </button>
             <button
               onClick={() => handleNavClick('trip-match')}
-              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer"
+              className={getLinkClasses('trip-match')}
             >
               Plan
             </button>
             <button
               onClick={() => handleNavClick('detour')}
-              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer"
+              className={getLinkClasses('detour')}
             >
               Detour
             </button>
             <button
               onClick={() => handleNavClick('reality-engine')}
-              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer"
+              className={getLinkClasses('reality-engine')}
             >
               Reality Engine
             </button>
             <button
               onClick={() => handleNavClick('my-space')}
-              className={`text-sm font-bold transition-colors cursor-pointer flex items-center gap-1 ${
-                currentView === 'my-space' ? 'text-[#C85A32]' : 'hover:text-[#C85A32]'
+              className={`text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 px-3 py-1 rounded-full ${
+                currentView === 'my-space'
+                  ? 'bg-[#C85A32] text-white shadow-md'
+                  : 'hover:text-[#C85A32]'
               }`}
             >
               <User className="w-3.5 h-3.5" />
@@ -155,35 +188,58 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
             <nav className="flex flex-col gap-4 text-base font-semibold">
               <button
                 onClick={() => handleNavClick('explore')}
-                className="text-left py-2 border-b border-black/5 hover:text-[#C85A32]"
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'home' && activeSection === 'explore' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
               >
-                Explore Journeys
+                <span>Explore Journeys</span>
+                {currentView === 'home' && activeSection === 'explore' && (
+                  <span className="w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                )}
               </button>
               <button
                 onClick={() => handleNavClick('trip-match')}
-                className="text-left py-2 border-b border-black/5 hover:text-[#C85A32]"
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'home' && activeSection === 'trip-match' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
               >
-                Trip Match Engine
+                <span>Trip Match Engine</span>
+                {currentView === 'home' && activeSection === 'trip-match' && (
+                  <span className="w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                )}
               </button>
               <button
                 onClick={() => handleNavClick('detour')}
-                className="text-left py-2 border-b border-black/5 hover:text-[#C85A32] flex items-center justify-between"
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'home' && activeSection === 'detour' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
               >
                 <span>Tripora Detour</span>
-                <span className="px-2 py-0.5 text-xs bg-[#C85A32]/20 text-[#C85A32] rounded-full">Live Demo</span>
+                {currentView === 'home' && activeSection === 'detour' ? (
+                  <span className="w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                ) : (
+                  <span className="px-2 py-0.5 text-xs bg-[#C85A32]/20 text-[#C85A32] rounded-full">Live Demo</span>
+                )}
               </button>
               <button
                 onClick={() => handleNavClick('reality-engine')}
-                className="text-left py-2 border-b border-black/5 hover:text-[#C85A32]"
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'home' && activeSection === 'reality-engine' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
               >
-                India Reality Engine
+                <span>India Reality Engine</span>
+                {currentView === 'home' && activeSection === 'reality-engine' && (
+                  <span className="w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                )}
               </button>
               <button
                 onClick={() => handleNavClick('my-space')}
-                className="text-left py-2 border-b border-black/5 text-[#C85A32] flex items-center justify-between font-bold"
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'my-space' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
               >
                 <span>My Space</span>
-                <span className="px-2 py-0.5 text-xs bg-[#C85A32]/20 text-[#C85A32] rounded-full">Personal Hub</span>
+                <span className="px-2 py-0.5 text-xs bg-[#C85A32]/20 text-[#C85A32] rounded-full font-bold">Personal Hub</span>
               </button>
             </nav>
 
