@@ -87,10 +87,9 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
             </button>
             <button
               onClick={() => handleNavClick('detour')}
-              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer flex items-center gap-1.5"
+              className="text-sm font-medium hover:text-[#C85A32] transition-colors cursor-pointer"
             >
               Detour
-              <span className="px-1.5 py-0.5 rounded-full text-[9px] bg-[#C85A32]/20 text-[#C85A32] font-bold border border-[#C85A32]/30">NEW</span>
             </button>
             <button
               onClick={() => handleNavClick('reality-engine')}
