@@ -1,16 +1,28 @@
 import React from 'react';
-import { Sparkles, Check } from 'lucide-react';
+import {
+  Sparkles,
+  Check,
+  Mountain,
+  Palmtree,
+  Trees,
+  Landmark,
+  Castle,
+  Compass,
+  Utensils,
+  Palette,
+  Building2
+} from 'lucide-react';
 
 const VIBE_OPTIONS = [
-  { id: 'Mountains', label: 'Mountains', icon: '🏔' },
-  { id: 'Beaches', label: 'Beaches', icon: '🏖' },
-  { id: 'Nature', label: 'Nature', icon: '🌿' },
-  { id: 'Spiritual', label: 'Spiritual', icon: '🛕' },
-  { id: 'Heritage', label: 'Heritage', icon: '🏰' },
-  { id: 'Adventure', label: 'Adventure', icon: '🧗‍♂️' },
-  { id: 'Food', label: 'Food', icon: '🍲' },
-  { id: 'Culture', label: 'Culture', icon: '🎭' },
-  { id: 'City', label: 'City', icon: '🏙' }
+  { id: 'Mountains', label: 'Mountains', icon: Mountain },
+  { id: 'Beaches', label: 'Beaches', icon: Palmtree },
+  { id: 'Nature', label: 'Nature', icon: Trees },
+  { id: 'Spiritual', label: 'Spiritual', icon: Landmark },
+  { id: 'Heritage', label: 'Heritage', icon: Castle },
+  { id: 'Adventure', label: 'Adventure', icon: Compass },
+  { id: 'Food', label: 'Food', icon: Utensils },
+  { id: 'Culture', label: 'Culture', icon: Palette },
+  { id: 'City', label: 'City', icon: Building2 }
 ];
 
 export default function VibeSelector({ selectedVibes, toggleVibe }) {
@@ -33,6 +45,7 @@ export default function VibeSelector({ selectedVibes, toggleVibe }) {
       <div className="flex flex-wrap gap-2.5">
         {VIBE_OPTIONS.map((vibe) => {
           const isSelected = selectedVibes.includes(vibe.id);
+          const Icon = vibe.icon;
 
           return (
             <button
@@ -45,7 +58,7 @@ export default function VibeSelector({ selectedVibes, toggleVibe }) {
                   : 'bg-[#F7F4EE] text-[#4A4D5A] hover:bg-white hover:text-[#141518] border border-black/10'
               }`}
             >
-              <span className="text-base">{vibe.icon}</span>
+              <Icon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-[#C85A32]'}`} />
               <span>{vibe.label}</span>
               {isSelected && <Check className="w-3.5 h-3.5 ml-0.5" />}
             </button>
@@ -55,3 +68,4 @@ export default function VibeSelector({ selectedVibes, toggleVibe }) {
     </div>
   );
 }
+

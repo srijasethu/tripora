@@ -110,11 +110,11 @@ export default function TripFinder({ onFindTrip }) {
                 onChange={(e) => setVibe(e.target.value)}
                 className="bg-transparent text-white font-sans text-base font-semibold focus:outline-none cursor-pointer [&>option]:bg-[#15171E] [&>option]:text-white"
               >
-                <option value="Mountains + Chill">Mountains + Chill 🏔</option>
-                <option value="Waterfalls + Adventure">Waterfalls + Adventure 🌊</option>
-                <option value="Coastal + Heritage">Coastal + Heritage 🏖</option>
-                <option value="Spiritual + Food">Spiritual + Food 🪔</option>
-                <option value="Broke but Travelling">Broke but Travelling 🎒</option>
+                <option value="Mountains + Chill">Mountains + Chill</option>
+                <option value="Waterfalls + Adventure">Waterfalls + Adventure</option>
+                <option value="Coastal + Heritage">Coastal + Heritage</option>
+                <option value="Spiritual + Food">Spiritual + Food</option>
+                <option value="Broke but Travelling">Broke but Travelling</option>
               </select>
             </div>
 

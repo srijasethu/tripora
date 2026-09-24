@@ -56,7 +56,10 @@ export default function Detour() {
                         : 'bg-[#FAF6F0] text-[#141518] hover:bg-black/5 border border-black/5'
                     }`}
                   >
-                    <span>📍 {loc.name}, {loc.state}</span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 opacity-80" />
+                      {loc.name}, {loc.state}
+                    </span>
                     <span className="text-xs font-mono opacity-80">{loc.timeAvailable}</span>
                   </button>
                 ))}
@@ -88,23 +91,27 @@ export default function Detour() {
 
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { id: 'Chill', label: '☕ Chill', icon: Coffee },
-                  { id: 'Eat', label: '🍛 Eat', icon: Utensils },
-                  { id: 'Explore', label: '📷 Explore', icon: Camera },
-                  { id: 'Shop', label: '🛍 Shop', icon: ShoppingBag }
-                ].map((m) => (
-                  <button
-                    key={m.id}
-                    onClick={() => setSelectedMood(m.id)}
-                    className={`p-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${
-                      selectedMood === m.id
-                        ? 'bg-[#8C6422] text-white shadow-md'
-                        : 'bg-[#FAF6F0] text-[#141518] hover:bg-black/5 border border-black/10'
-                    }`}
-                  >
-                    <span>{m.label}</span>
-                  </button>
-                ))}
+                  { id: 'Chill', label: 'Chill', icon: Coffee },
+                  { id: 'Eat', label: 'Eat', icon: Utensils },
+                  { id: 'Explore', label: 'Explore', icon: Camera },
+                  { id: 'Shop', label: 'Shop', icon: ShoppingBag }
+                ].map((m) => {
+                  const Icon = m.icon;
+                  return (
+                    <button
+                      key={m.id}
+                      onClick={() => setSelectedMood(m.id)}
+                      className={`p-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${
+                        selectedMood === m.id
+                          ? 'bg-[#8C6422] text-white shadow-md'
+                          : 'bg-[#FAF6F0] text-[#141518] hover:bg-black/5 border border-black/10'
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      <span>{m.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -128,8 +135,9 @@ export default function Detour() {
               
               <div className="flex items-center justify-between pb-6 border-b border-black/10">
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#C85A32]">
-                    📍 {activeLocation.name} Micro-Adventure
+                  <span className="text-xs font-mono font-bold text-[#C85A32] flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 inline" />
+                    {activeLocation.name} Micro-Adventure
                   </span>
                   <h4 className="font-serif text-2xl font-bold text-[#141518] mt-0.5">
                     {selectedMood} Trail

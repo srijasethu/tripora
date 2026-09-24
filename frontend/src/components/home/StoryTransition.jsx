@@ -90,7 +90,7 @@ export default function StoryTransition() {
               <Mountain className="w-7 h-7" />
             </div>
             <span className="font-serif text-4xl sm:text-5xl font-black text-[#141518] tracking-tight mb-2">
-              🏔 CHILL
+              CHILL
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-[#C85A32]">
               YOUR VIBE
