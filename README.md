@@ -1,16 +1,57 @@
-# React + Vite
+# Tripora 🗺️✈️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Tripora** is an all-in-one trip planner and travel discovery platform tailored for exploring India. From curated journeys and squad voting to interactive itinerary planning and local reality insights, Tripora makes journey planning effortless and exciting.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Key Features
 
-## React Compiler
+- 🌟 **Explore Journeys**: Discover top-rated destinations, local hidden gems, and thematic travel experiences.
+- 🎯 **Trip Match Engine**: Customize itineraries based on duration, budget, travel style, and squad preferences.
+- 🇮🇳 **India Reality Engine**: Real-time travel insights, transport visualizers, local weather, and travel tips.
+- 👥 **My Space & Squad Hub**: Bookmark favorite trips, manage saved itineraries, collaborate with friends, and vote on group plans.
+- 🎨 **Modern & Responsive UI**: Smooth animations powered by Framer Motion, styled with Tailwind CSS, and designed for mobile & desktop.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React (Vite), Tailwind CSS, Framer Motion, Lucide React
+- **State & Context**: React Context API
+- **Build Tool**: Vite
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- `npm` or `yarn`
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/srijasethu/tripora.git
+   cd tripora
+   ```
+
+2. Install dependencies:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open `http://localhost:5173` in your browser to view the app!
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
