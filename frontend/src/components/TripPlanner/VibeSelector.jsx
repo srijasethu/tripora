@@ -1,4 +1,4 @@
-import React from 'react';
+// Vibe selector component
 import {
   Sparkles,
   Check,

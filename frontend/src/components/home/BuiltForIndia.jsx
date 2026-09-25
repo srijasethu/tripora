@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TRANSPORT_ROUTES } from '../../data/transportRoutes';
 import { Train, Bus, Car, MapPin, ShieldCheck } from 'lucide-react';

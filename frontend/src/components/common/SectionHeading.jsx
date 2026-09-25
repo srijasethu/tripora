@@ -1,4 +1,4 @@
-import React from 'react';
+// SectionHeading Component
 import { motion } from 'framer-motion';
 
 export default function SectionHeading({

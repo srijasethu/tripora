@@ -1,4 +1,4 @@
-import React from 'react';
+// StoryTransition Component
 import { motion } from 'framer-motion';
 import { IndianRupee, Clock, Mountain, ArrowDown } from 'lucide-react';
 

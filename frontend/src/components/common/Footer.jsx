@@ -1,4 +1,4 @@
-import React from 'react';
+// Footer Component
 import { Compass, Heart, ArrowUpRight, Globe, Share2, MessageCircle } from 'lucide-react';
 
 export default function Footer() {

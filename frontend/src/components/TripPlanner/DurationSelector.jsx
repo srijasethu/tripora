@@ -1,4 +1,4 @@
-import React from 'react';
+// Duration selector component
 
 const DURATION_PRESETS = [
   { label: '1–2 DAYS', min: 1, max: 2, defaultVal: 2 },

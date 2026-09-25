@@ -1,4 +1,4 @@
-import React from 'react';
+// ExperienceGrid Component
 import { motion } from 'framer-motion';
 import { EXPERIENCE_CATEGORIES } from '../../data/experiences';
 import SectionHeading from '../common/SectionHeading';

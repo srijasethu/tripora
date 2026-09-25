@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DESTINATIONS } from '../../data/destinations';
 import SectionHeading from '../common/SectionHeading';
 import Button from '../common/Button';
-import { MapPin, Thermometer, Clock, IndianRupee, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Thermometer, Clock, IndianRupee, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function TripMatch() {
   const [selectedId, setSelectedId] = useState('kodaikanal');
-  const [scenarioCity, setScenarioCity] = useState('Chennai');
+  const scenarioCity = 'Chennai';
 
   const selectedDestination = DESTINATIONS.find((d) => d.id === selectedId) || DESTINATIONS[0];
   const alternativeDestinations = DESTINATIONS.filter((d) => d.id !== selectedId);

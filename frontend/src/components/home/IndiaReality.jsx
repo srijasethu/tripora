@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { INITIAL_ITINERARY, OPTIMIZED_ITINERARY } from '../../data/realityChecks';
 import SectionHeading from '../common/SectionHeading';

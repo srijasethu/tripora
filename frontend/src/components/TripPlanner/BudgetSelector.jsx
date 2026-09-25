@@ -1,5 +1,4 @@
-import React from 'react';
-import { IndianRupee } from 'lucide-react';
+// Budget selector component
 
 const BUDGET_PRESETS = [
   { label: '₹3,000', value: 3000 },

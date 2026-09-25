@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
@@ -12,8 +12,7 @@ import {
   CheckCircle2,
   Heart,
   Check,
-  X,
-  Plus
+  X
 } from 'lucide-react';
 import Button from '../common/Button';
 import { useUserSpace } from '../../context/UserContext';
@@ -24,7 +23,6 @@ export default function TripRecommendation({
   onPrevMatch,
   matchIndex,
   totalMatches,
-  userBudget,
   userDays,
   userVibes
 }) {

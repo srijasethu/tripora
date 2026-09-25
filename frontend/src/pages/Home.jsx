@@ -1,4 +1,3 @@
-import React from 'react';
 import Hero from '../components/home/Hero';
 import TripPlanner from '../components/TripPlanner/TripPlanner';
 import IndiaReality from '../components/home/IndiaReality';
@@ -9,7 +8,7 @@ import SquadMode from '../components/home/SquadMode';
 import FinalCTA from '../components/home/FinalCTA';
 
 export default function Home() {
-  const handleFindTrip = (searchParams) => {
+  const handleFindTrip = () => {
     // Scroll down smoothly to Trip Match section
     const matchSection = document.getElementById('trip-match');
     if (matchSection) {

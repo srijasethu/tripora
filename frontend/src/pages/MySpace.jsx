@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Compass,
   CheckCircle2,
   Heart,
   Calendar,
   IndianRupee,
-  MapPin,
   Trash2,
   ArrowRight,
   Sparkles,

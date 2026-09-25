@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SQUAD_DESTINATIONS } from '../../data/squadVotes';
 import SectionHeading from '../common/SectionHeading';
