@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '../common/SectionHeading';
 import Button from '../common/Button';
-import { WEATHER_DESTINATIONS, WEATHER_CATEGORIES } from '../../data/weatherData';
+import { WEATHER_DESTINATIONS, WEATHER_CATEGORIES, convertTemp } from '../../data/weatherData';
 
 function getWeatherIcon(iconType, className = 'w-6 h-6') {
   switch (iconType) {
@@ -38,6 +38,7 @@ function getWeatherIcon(iconType, className = 'w-6 h-6') {
 export default function WeatherRadar({ onOpenFullModal }) {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedId, setSelectedId] = useState('munnar');
+  const [tempUnit, setTempUnit] = useState('C');
 
   const filtered = WEATHER_DESTINATIONS.filter(
     (item) => activeCategory === 'All' || item.category === activeCategory
@@ -59,21 +60,51 @@ export default function WeatherRadar({ onOpenFullModal }) {
           light={true}
         />
 
-        {/* Category Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
-          {WEATHER_CATEGORIES.map((cat) => (
+        {/* Category Selector Tabs & Temperature Unit Switcher */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {WEATHER_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer ${
+                  activeCategory === cat
+                    ? 'bg-[#C85A32] text-white shadow-md border border-black/10 scale-105'
+                    : 'bg-[#F7F4EE] text-[#4A4D5A] hover:text-[#141518] border border-black/10'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Unit Toggle Pill */}
+          <div className="flex items-center bg-[#F7F4EE] rounded-full p-1 border border-black/10 shadow-sm flex-shrink-0">
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-[#C85A32] text-white shadow-md border border-black/10 scale-105'
-                  : 'bg-[#F7F4EE] text-[#4A4D5A] hover:text-[#141518] border border-black/10'
+              type="button"
+              onClick={() => setTempUnit('C')}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                tempUnit === 'C'
+                  ? 'bg-[#C85A32] text-white shadow-sm'
+                  : 'text-[#5A5E6D] hover:text-[#141518]'
               }`}
+              aria-label="Display temperature in Celsius"
             >
-              {cat}
+              °C
             </button>
-          ))}
+            <button
+              type="button"
+              onClick={() => setTempUnit('F')}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                tempUnit === 'F'
+                  ? 'bg-[#C85A32] text-white shadow-sm'
+                  : 'text-[#5A5E6D] hover:text-[#141518]'
+              }`}
+              aria-label="Display temperature in Fahrenheit"
+            >
+              °F
+            </button>
+          </div>
         </div>
 
         {/* Dynamic Interactive Weather Showcase */}
@@ -114,7 +145,7 @@ export default function WeatherRadar({ onOpenFullModal }) {
 
                   <div className="text-right">
                     <span className="text-2xl font-black font-mono text-[#141518]">
-                      {item.currentTemp}°C
+                      {convertTemp(item.currentTemp, tempUnit)}°{tempUnit}
                     </span>
                     <span className="block text-[10px] font-sans text-[#5A5E6D]">
                       Rain {item.rainfallProb}
@@ -149,7 +180,7 @@ export default function WeatherRadar({ onOpenFullModal }) {
                       {activeDest.name}
                     </h3>
                     <p className="text-sm text-[#5A5E6D] font-medium mt-0.5">
-                      {activeDest.condition} • Feels like {activeDest.feelsLike}°C
+                      {activeDest.condition} • Feels like {convertTemp(activeDest.feelsLike, tempUnit)}°{tempUnit}
                     </p>
                   </div>
 
@@ -159,7 +190,7 @@ export default function WeatherRadar({ onOpenFullModal }) {
                     </div>
                     <div className="text-right">
                       <span className="text-4xl font-black font-mono text-[#141518] leading-none">
-                        {activeDest.currentTemp}°
+                        {convertTemp(activeDest.currentTemp, tempUnit)}°{tempUnit}
                       </span>
                       <span className="block text-[11px] font-mono text-emerald-700 font-bold mt-1">
                         AQI {activeDest.aqi} ({activeDest.aqiStatus})
@@ -224,8 +255,12 @@ export default function WeatherRadar({ onOpenFullModal }) {
                       >
                         <span className="text-xs font-bold text-[#141518]">{f.day}</span>
                         <div className="my-2">{getWeatherIcon(f.icon, 'w-5 h-5')}</div>
-                        <span className="text-sm font-bold font-mono text-[#141518]">{f.temp}°</span>
-                        <span className="text-[10px] font-mono text-[#5A5E6D]">{f.low}°</span>
+                        <span className="text-sm font-bold font-mono text-[#141518]">
+                          {convertTemp(f.temp, tempUnit)}°
+                        </span>
+                        <span className="text-[10px] font-mono text-[#5A5E6D]">
+                          {convertTemp(f.low, tempUnit)}°
+                        </span>
                       </div>
                     ))}
                   </div>

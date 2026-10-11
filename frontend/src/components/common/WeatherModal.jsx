@@ -15,7 +15,7 @@ import {
   Search,
   ArrowRight
 } from 'lucide-react';
-import { WEATHER_DESTINATIONS, WEATHER_CATEGORIES } from '../../data/weatherData';
+import { WEATHER_DESTINATIONS, WEATHER_CATEGORIES, convertTemp } from '../../data/weatherData';
 
 function getWeatherIcon(iconType, className = 'w-5 h-5') {
   switch (iconType) {
@@ -39,6 +39,7 @@ export default function WeatherModal({ isOpen, onClose, onSelectDestination }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeDestId, setActiveDestId] = useState('goa');
+  const [tempUnit, setTempUnit] = useState('C');
 
   if (!isOpen) return null;
 
@@ -98,13 +99,43 @@ export default function WeatherModal({ isOpen, onClose, onSelectDestination }) {
               </div>
             </div>
 
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer"
-              aria-label="Close Weather Radar"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              {/* Unit Toggle Pill */}
+              <div className="flex items-center bg-white/10 rounded-xl p-0.5 border border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setTempUnit('C')}
+                  className={`px-2.5 py-1 text-xs font-mono font-bold rounded-lg transition-colors cursor-pointer ${
+                    tempUnit === 'C'
+                      ? 'bg-[#C85A32] text-white shadow-sm'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                  aria-label="Set temperature unit to Celsius"
+                >
+                  °C
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTempUnit('F')}
+                  className={`px-2.5 py-1 text-xs font-mono font-bold rounded-lg transition-colors cursor-pointer ${
+                    tempUnit === 'F'
+                      ? 'bg-[#C85A32] text-white shadow-sm'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                  aria-label="Set temperature unit to Fahrenheit"
+                >
+                  °F
+                </button>
+              </div>
+
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close Weather Radar"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Search & Category Filter Bar */}
@@ -187,10 +218,10 @@ export default function WeatherModal({ isOpen, onClose, onSelectDestination }) {
 
                       <div className="text-right flex flex-col items-end">
                         <span className="text-xl sm:text-2xl font-black font-mono text-white leading-tight">
-                          {dest.currentTemp}°C
+                          {convertTemp(dest.currentTemp, tempUnit)}°{tempUnit}
                         </span>
                         <span className="text-[10px] text-white/40">
-                          Feels {dest.feelsLike}°C
+                          Feels {convertTemp(dest.feelsLike, tempUnit)}°{tempUnit}
                         </span>
                       </div>
                     </div>
@@ -224,10 +255,10 @@ export default function WeatherModal({ isOpen, onClose, onSelectDestination }) {
                   </div>
                   <div className="text-right">
                     <span className="text-3xl sm:text-4xl font-black font-mono text-white">
-                      {activeDestination.currentTemp}°
+                      {convertTemp(activeDestination.currentTemp, tempUnit)}°{tempUnit}
                     </span>
                     <span className="block text-[10px] uppercase font-mono text-white/50">
-                      Feels like {activeDestination.feelsLike}°C
+                      Feels like {convertTemp(activeDestination.feelsLike, tempUnit)}°{tempUnit}
                     </span>
                   </div>
                 </div>
@@ -289,8 +320,12 @@ export default function WeatherModal({ isOpen, onClose, onSelectDestination }) {
                     >
                       <span className="text-xs font-bold text-white/80">{fc.day}</span>
                       <div className="my-1.5">{getWeatherIcon(fc.icon, 'w-4 h-4')}</div>
-                      <span className="text-sm font-bold font-mono text-white">{fc.temp}°</span>
-                      <span className="text-[10px] text-white/40 font-mono">{fc.low}°</span>
+                      <span className="text-sm font-bold font-mono text-white">
+                        {convertTemp(fc.temp, tempUnit)}°
+                      </span>
+                      <span className="text-[10px] text-white/40 font-mono">
+                        {convertTemp(fc.low, tempUnit)}°
+                      </span>
                     </div>
                   ))}
                 </div>

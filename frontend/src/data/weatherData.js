@@ -268,3 +268,13 @@ export const WEATHER_CATEGORIES = [
   'Heritage & Plains',
   'High Altitude'
 ];
+
+/**
+ * Converts temperature from Celsius to desired unit ('C' or 'F').
+ */
+export function convertTemp(celsius, unit = 'C') {
+  if (unit === 'F') {
+    return Math.round((celsius * 9) / 5 + 32);
+  }
+  return Math.round(celsius);
+}
