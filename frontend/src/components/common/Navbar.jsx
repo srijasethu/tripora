@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, Menu, X, ArrowRight, User } from 'lucide-react';
+import { Compass, Menu, X, ArrowRight, User, CloudSun } from 'lucide-react';
 import Button from './Button';
 
-export default function Navbar({ currentView, setCurrentView, onNavigateToSection }) {
+export default function Navbar({ currentView, setCurrentView, onNavigateToSection, onOpenWeatherModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -17,7 +17,7 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
       }
 
       if (currentView === 'home') {
-        const sections = ['trip-match', 'reality-engine', 'explore', 'detour'];
+        const sections = ['trip-match', 'reality-engine', 'weather-radar', 'explore', 'detour'];
         const scrollPosition = window.scrollY + 250;
 
         let current = '';
@@ -117,6 +117,12 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
               Plan
             </button>
             <button
+              onClick={() => handleNavClick('weather-radar')}
+              className={getLinkClasses('weather-radar')}
+            >
+              Weather
+            </button>
+            <button
               onClick={() => handleNavClick('detour')}
               className={getLinkClasses('detour')}
             >
@@ -142,7 +148,22 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            {onOpenWeatherModal && (
+              <button
+                onClick={onOpenWeatherModal}
+                title="Launch Live Weather & Climate Radar"
+                className={`text-xs px-3 py-1.5 font-mono font-bold rounded-full border transition-all cursor-pointer flex items-center gap-1.5 shadow-sm ${
+                  scrolled || currentView === 'my-space'
+                    ? 'bg-black/5 border-black/10 text-[#141518] hover:bg-[#C85A32] hover:text-white hover:border-[#C85A32]'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+                }`}
+              >
+                <CloudSun className="w-3.5 h-3.5 text-amber-400" />
+                <span>Weather Radar</span>
+              </button>
+            )}
+
             <button
               onClick={() => handleNavClick('my-space')}
               className={`text-sm px-3 py-2 font-medium transition-colors cursor-pointer ${
@@ -209,6 +230,22 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
                 )}
               </button>
               <button
+                onClick={() => handleNavClick('weather-radar')}
+                className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
+                  currentView === 'home' && activeSection === 'weather-radar' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <CloudSun className="w-4 h-4 text-[#C85A32]" />
+                  <span>Live Weather & Climate</span>
+                </span>
+                {currentView === 'home' && activeSection === 'weather-radar' ? (
+                  <span className="w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                ) : (
+                  <span className="px-2 py-0.5 text-xs bg-amber-500/15 text-amber-700 rounded-full font-mono font-bold">Live</span>
+                )}
+              </button>
+              <button
                 onClick={() => handleNavClick('detour')}
                 className={`text-left py-2 border-b border-black/5 transition-colors flex items-center justify-between ${
                   currentView === 'home' && activeSection === 'detour' ? 'text-[#C85A32] font-extrabold pl-2 border-l-4 border-l-[#C85A32]' : 'hover:text-[#C85A32]'
@@ -244,6 +281,19 @@ export default function Navbar({ currentView, setCurrentView, onNavigateToSectio
             </nav>
 
             <div className="flex flex-col gap-3 pt-2">
+              {onOpenWeatherModal && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenWeatherModal();
+                  }}
+                  className="w-full py-2.5 rounded-xl border border-black/10 bg-white font-mono text-xs font-bold flex items-center justify-center gap-2 text-[#141518]"
+                >
+                  <CloudSun className="w-4 h-4 text-amber-500" />
+                  <span>Open Full Weather Radar</span>
+                </button>
+              )}
+
               <Button
                 variant="primary"
                 size="md"

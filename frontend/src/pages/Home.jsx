@@ -1,13 +1,14 @@
 import Hero from '../components/home/Hero';
 import TripPlanner from '../components/TripPlanner/TripPlanner';
 import IndiaReality from '../components/home/IndiaReality';
+import WeatherRadar from '../components/home/WeatherRadar';
 import IndiaExplorer from '../components/home/IndiaExplorer';
 import ExperienceGrid from '../components/home/ExperienceGrid';
 import Detour from '../components/home/Detour';
 import SquadMode from '../components/home/SquadMode';
 import FinalCTA from '../components/home/FinalCTA';
 
-export default function Home() {
+export default function Home({ onOpenWeatherModal }) {
   const handleFindTrip = () => {
     // Scroll down smoothly to Trip Match section
     const matchSection = document.getElementById('trip-match');
@@ -27,19 +28,22 @@ export default function Home() {
       {/* 3. Signature Feature: India Reality Engine */}
       <IndiaReality />
 
-      {/* 6. Interactive India Explorer */}
+      {/* 4. Live Atmospheric Intelligence: Weather & Climate Radar */}
+      <WeatherRadar onOpenFullModal={onOpenWeatherModal} />
+
+      {/* 5. Interactive India Explorer */}
       <IndiaExplorer />
 
-      {/* 7. Choose Your India Editorial Tiles */}
+      {/* 6. Choose Your India Editorial Tiles */}
       <ExperienceGrid />
 
-      {/* 8. Signature Feature: Tripora Detour */}
+      {/* 7. Signature Feature: Tripora Detour */}
       <Detour />
 
-      {/* 9. Squad Mode Collaborative Planning */}
+      {/* 8. Squad Mode Collaborative Planning */}
       <SquadMode />
 
-      {/* 10. Final Cinematic CTA */}
+      {/* 9. Final Cinematic CTA */}
       <FinalCTA />
     </main>
   );

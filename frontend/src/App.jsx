@@ -3,10 +3,12 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Home from './pages/Home';
 import MySpace from './pages/MySpace';
+import WeatherModal from './components/common/WeatherModal';
 import { UserProvider } from './context/UserContext';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home' | 'my-space'
+  const [weatherModalOpen, setWeatherModalOpen] = useState(false);
 
   const handleNavigateToSection = (sectionId) => {
     setCurrentView('home');
@@ -27,15 +29,21 @@ export default function App() {
           currentView={currentView}
           setCurrentView={setCurrentView}
           onNavigateToSection={handleNavigateToSection}
+          onOpenWeatherModal={() => setWeatherModalOpen(true)}
         />
         <div className="flex-grow">
           {currentView === 'my-space' ? (
             <MySpace onNavigateToPlan={() => handleNavigateToSection('trip-match')} />
           ) : (
-            <Home />
+            <Home onOpenWeatherModal={() => setWeatherModalOpen(true)} />
           )}
         </div>
         <Footer />
+        <WeatherModal
+          isOpen={weatherModalOpen}
+          onClose={() => setWeatherModalOpen(false)}
+          onSelectDestination={() => handleNavigateToSection('trip-match')}
+        />
       </div>
     </UserProvider>
   );
