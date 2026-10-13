@@ -56,6 +56,8 @@ export default function TripFinder({ onFindTrip }) {
                 <option value="Kochi">Kochi</option>
                 <option value="Kolkata">Kolkata</option>
                 <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Ahmedabad">Ahmedabad</option>
               </select>
             </div>
 
@@ -94,6 +96,7 @@ export default function TripFinder({ onFindTrip }) {
               >
                 <option value="2 days">Weekend (2 days)</option>
                 <option value="3 days">Long Weekend (3 days)</option>
+                <option value="4 days">Mini Break (4 days)</option>
                 <option value="5 days">Extended Escape (5 days)</option>
                 <option value="7 days">Full Week (7 days)</option>
               </select>

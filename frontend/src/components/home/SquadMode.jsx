@@ -116,7 +116,7 @@ export default function SquadMode() {
               variant="outline"
               size="sm"
               icon={MessageSquare}
-              onClick={() => alert('Invite link copied! Share on WhatsApp to start squad voting.')}
+              onClick={() => alert('Squad invite link copied! 🎉\n\nShare this link on WhatsApp with your squad. Each member votes on destinations, budgets, and vibes — then Tripora calculates your group\'s perfect trip overlap automatically.')}
               className="text-[#141518] border-black/20 hover:bg-black/5"
             >
               Share WhatsApp Poll →
