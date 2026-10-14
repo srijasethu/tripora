@@ -270,11 +270,30 @@ export const WEATHER_CATEGORIES = [
 ];
 
 /**
- * Converts temperature from Celsius to desired unit ('C' or 'F').
+ * Converts temperature from Celsius to the desired unit.
+ * @param {number} celsius - The temperature in Celsius.
+ * @param {'C'|'F'} unit - Target unit: 'C' for Celsius, 'F' for Fahrenheit.
+ * @returns {number} Rounded temperature in the target unit.
  */
 export function convertTemp(celsius, unit = 'C') {
   if (unit === 'F') {
     return Math.round((celsius * 9) / 5 + 32);
   }
   return Math.round(celsius);
+}
+
+/**
+ * Returns a Tailwind-compatible color token based on AQI status string.
+ * @param {'Excellent'|'Good'|'Moderate'|'Poor'|'Hazardous'} status
+ * @returns {{ text: string, bg: string }} Color classes for text and background.
+ */
+export function getAQIColor(status) {
+  switch (status) {
+    case 'Excellent': return { text: 'text-emerald-400', bg: 'bg-emerald-400/15' };
+    case 'Good':      return { text: 'text-green-400',   bg: 'bg-green-400/15'   };
+    case 'Moderate':  return { text: 'text-yellow-400',  bg: 'bg-yellow-400/15'  };
+    case 'Poor':      return { text: 'text-orange-400',  bg: 'bg-orange-400/15'  };
+    case 'Hazardous': return { text: 'text-red-500',     bg: 'bg-red-500/15'     };
+    default:          return { text: 'text-gray-400',    bg: 'bg-gray-400/15'    };
+  }
 }
